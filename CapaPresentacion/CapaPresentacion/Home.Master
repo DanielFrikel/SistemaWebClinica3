@@ -140,7 +140,7 @@
                 </div>
                 <ul class="sidebar-menu">
                     <li class="active">
-                        <a href="#">
+                        <a href="PanelGeneral.aspx">
                             <i class="fa fa-dashboard"></i>
                             <span>Panel General</span>
                         </a>

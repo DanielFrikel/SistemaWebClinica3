@@ -22,7 +22,20 @@ function addRow() {
 var tabla, data;
 
 function addRowDT(data) {
-    tabla = $("#tbl_pacientes").dataTable();
+    tabla = $("#tbl_pacientes").dataTable({
+        "aaSorting": [[0, 'asc']],
+        "bSort": true,
+        "aoColumns": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            {"bSortable":false}
+        ]
+    });
+
     for (var i = 0; i < data.length; i++) {
         tabla.fnAddData([
             data[i].IdPaciente,
@@ -47,8 +60,7 @@ function sendDataAjax() {
             console.log(xhr.status + " \n" + xhr.responseText, "\n" + thrownError);
         },
         success: function (data) {
-            //data.d
-            console.log(data.d);
+            //data.d            
             addRowDT(data.d);
         }
     });
@@ -83,6 +95,8 @@ function updateDataAjax() {
 
 
 function deleteDataAjax(data) {
+    //DUDOSO
+    tabla.fnClearTable();
 
     var obj = JSON.stringify({ id: JSON.stringify(data) });
 
@@ -96,12 +110,8 @@ function deleteDataAjax(data) {
             console.log(xhr.status + " \n" + xhr.responseText, "\n" + thrownError);
         },
         success: function (response) {
-            if (response.d) {
-                //alert("Registro actualizado de manera CORRECTA.");
-
-                //tabla.fnClearTable();
-                //sendDataAjax();
-
+            if (response.d) {                
+                alert("Registro actualizado de manera CORRECTA.");                                                
             } else {
                 alert("No se pudo actualizar el registro.");
             }
@@ -130,9 +140,10 @@ $(document).on('click', '.btn-delete', function (e) {
 
     //Segundo Metodo: Enviar el codigo del paciente al servidor y actualizar tabla, renderizar
     //Paso 1: Enviar el id al servidor por medio de ajax
-    deleteDataAjax(dataRow[0]);
-    //Paso 2: Renderizar el dataTable
-    sendDataAjax();
+    deleteDataAjax(dataRow[0]);    
+    //Paso 2: Renderizar el dataTable  
+    //tabla.clear().draw();
+    sendDataAjax();    
 });
 
 //Cargar datos en el modal

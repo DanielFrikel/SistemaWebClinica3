@@ -379,6 +379,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Custom\BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Custom\CustomMembershipProvider.cs" />
+    <Compile Include="Custom\SessionManager.cs" />
     <Compile Include="GestionarPaciente.aspx.cs">
       <DependentUpon>GestionarPaciente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -26,6 +26,7 @@ namespace CapaPresentacion
                 // Asignar la lista de elementos al DropDownList
                 ddlSexo.DataSource = sexos;
                 ddlSexo.DataBind();
+                
             }
         }
 
