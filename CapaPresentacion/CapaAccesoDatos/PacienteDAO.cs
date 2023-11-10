@@ -36,7 +36,7 @@ namespace CapaAccesoDatos
                 con = Conexion.getInstance().ConexionDB();
                 cmd = new SqlCommand("spRegistrarPaciente", con);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@prmNombre", objPaciente.Nombres);
+                cmd.Parameters.AddWithValue("@prmNombres", objPaciente.Nombres);
                 cmd.Parameters.AddWithValue("@prmApPaterno", objPaciente.ApPaterno);
                 cmd.Parameters.AddWithValue("@prmApMaterno", objPaciente.ApMaterno);
                 cmd.Parameters.AddWithValue("@prmEdad", objPaciente.Edad);
@@ -122,7 +122,7 @@ namespace CapaAccesoDatos
                     objPaciente.Sexo = Convert.ToChar(dr["sexo"].ToString());
                     objPaciente.NroDocumento = dr["nroDocumento"].ToString();
                     objPaciente.Direccion = dr["direccion"].ToString();
-                    objPaciente.Telefono = dr["telefono"].ToString();
+                    //objPaciente.Telefono = dr["telefono"].ToString();
                     objPaciente.Estado = true;
 
                     Lista.Add(objPaciente);

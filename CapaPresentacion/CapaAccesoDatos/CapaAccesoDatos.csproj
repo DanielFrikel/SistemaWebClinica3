@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="EmpleadoDAO.cs" />
     <Compile Include="Conexion.cs" />
+    <Compile Include="HorarioAtencionDAO.cs" />
+    <Compile Include="MedicoDAO.cs" />
     <Compile Include="PacienteDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

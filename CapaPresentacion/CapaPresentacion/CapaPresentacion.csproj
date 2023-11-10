@@ -71,6 +71,7 @@
     <Content Include="css\bootstrap-slider\slider.css" />
     <Content Include="css\bootstrap-wysihtml5\bootstrap3-wysihtml5.css" />
     <Content Include="css\bootstrap-wysihtml5\bootstrap3-wysihtml5.min.css" />
+    <Content Include="css\bootstrap.min.css" />
     <Content Include="css\colorpicker\bootstrap-colorpicker.css" />
     <Content Include="css\colorpicker\bootstrap-colorpicker.min.css" />
     <Content Include="css\datatables\dataTables.bootstrap.css" />
@@ -81,6 +82,7 @@
     <Content Include="css\datatables\images\sort_desc_disabled.png" />
     <Content Include="css\datepicker\datepicker3.css" />
     <Content Include="css\daterangepicker\daterangepicker-bs3.css" />
+    <Content Include="css\font-awesome.min.css" />
     <Content Include="css\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="css\iCheck\all.css" />
     <Content Include="css\iCheck\flat\aero%402x.png" />
@@ -211,6 +213,7 @@
     <Content Include="css\images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="css\images\ui-icons_d8e7f3_256x240.png" />
     <Content Include="css\images\ui-icons_f9bd01_256x240.png" />
+    <Content Include="css\ionicons.min.css" />
     <Content Include="css\ionslider\ion.rangeSlider.css" />
     <Content Include="css\ionslider\ion.rangeSlider.skinFlat.css" />
     <Content Include="css\ionslider\ion.rangeSlider.skinNice.css" />
@@ -219,6 +222,7 @@
     <Content Include="css\timepicker\bootstrap-timepicker.css" />
     <Content Include="css\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="GestionarHorarioAtencion.aspx" />
     <Content Include="GestionarPaciente.aspx" />
     <Content Include="img\ajax-loader.gif" />
     <Content Include="img\ajax-loader1.gif" />
@@ -249,9 +253,24 @@
     <Content Include="img\user-bg.png" />
     <Content Include="img\user.jpg" />
     <Content Include="img\user2.jpg" />
+    <Content Include="jAlert\images\error-icon.png" />
+    <Content Include="jAlert\images\help.gif" />
+    <Content Include="jAlert\images\important.gif" />
+    <Content Include="jAlert\images\info.gif" />
+    <Content Include="jAlert\images\message-icon.png" />
+    <Content Include="jAlert\images\title.gif" />
+    <Content Include="jAlert\images\warning-icon.png" />
+    <Content Include="jAlert\jquery.alerts.css" />
+    <Content Include="jAlert\jquery.alerts.js" />
     <Content Include="js\AdminLTE\app.js" />
     <Content Include="js\AdminLTE\dashboard.js" />
     <Content Include="js\AdminLTE\demo.js" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\horariosmedico.js" />
+    <Content Include="js\jquery-3.1.0.min.js" />
+    <Content Include="js\jquery-ui.min.js" />
+    <Content Include="js\jquery.min.js" />
+    <Content Include="js\jquery.ui.draggable.js" />
     <Content Include="js\paciente.js" />
     <Content Include="js\plugins\bootstrap-slider\bootstrap-slider.js" />
     <Content Include="js\plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.all.min.js" />
@@ -366,6 +385,7 @@
     <Content Include="js\plugins\misc\jquery.placeholder.js" />
     <Content Include="js\plugins\misc\modernizr.min.js" />
     <Content Include="js\plugins\misc\respond.min.js" />
+    <Content Include="js\plugins\moment\moment.min.js" />
     <Content Include="js\plugins\morris\morris.js" />
     <Content Include="js\plugins\morris\morris.min.js" />
     <Content Include="js\plugins\slimScroll\jquery.slimscroll.js" />
@@ -384,6 +404,13 @@
     </Compile>
     <Compile Include="Custom\CustomMembershipProvider.cs" />
     <Compile Include="Custom\SessionManager.cs" />
+    <Compile Include="GestionarHorarioAtencion.aspx.cs">
+      <DependentUpon>GestionarHorarioAtencion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionarHorarioAtencion.aspx.designer.cs">
+      <DependentUpon>GestionarHorarioAtencion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="GestionarPaciente.aspx.cs">
       <DependentUpon>GestionarPaciente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -415,19 +442,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="css\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="css\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="css\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="img\bootstrap-colorpicker\Thumbs.db" />
     <Content Include="img\credit\Thumbs.db" />
     <Content Include="img\Thumbs.db" />
+    <Content Include="Home.Master" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="js\plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="js\plugins\input-mask\phone-codes\phone-codes.json" />
     <Content Include="js\plugins\slimScroll\slimScroll.jquery.json" />
-    <Content Include="Home.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

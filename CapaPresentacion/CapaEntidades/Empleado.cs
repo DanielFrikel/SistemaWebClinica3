@@ -19,10 +19,8 @@ namespace CapaEntidades
         public String Usuario { get; set; }
         public String Clave { get; set; }
 
-        public Empleado()
-        {
-            
-        }
+        public Empleado() : this(0, new TipoEmpleado(), "", "", "", "", false, "", "", "") { }
+
         public Empleado(int ID, TipoEmpleado RTipoEmpleado, String Nombre, String ApPaterno, String ApMaterno, String NroDocumento, bool Estado, String Imagen, String Usuario, String Clave)
         {
             this.ID = ID;

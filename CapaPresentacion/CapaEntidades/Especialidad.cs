@@ -6,19 +6,20 @@ using System.Threading.Tasks;
 
 namespace CapaEntidades
 {
-    public class TipoEmpleado
+    public class Especialidad
     {
-        public int ID { get; set; }
+        public int IdEspecialidad { get; set; }
         public String Descripcion { get; set; }
         public bool Estado { get; set; }
 
-        public TipoEmpleado()
+        public Especialidad()
         {
+
         }
 
-        public TipoEmpleado(int ID, String Descripcion, bool Estado)
+        public Especialidad(int IdEspecialidad, String Descripcion, bool Estado)
         {
-            this.ID = ID;
+            this.IdEspecialidad = IdEspecialidad;
             this.Descripcion = Descripcion;
             this.Estado = Estado;
         }

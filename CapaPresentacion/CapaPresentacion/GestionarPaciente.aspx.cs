@@ -93,11 +93,11 @@ namespace CapaPresentacion
             bool response = PacienteLN.getInstance().RegistrarPaciente(objPaciente);
             if (response == true)
             {
-                Response.Write("<script>alert('REGISTRO INCORRECTO.') </script>");
+                Response.Write("<script>alert('REGISTRO CORRECTO.') </script>");
             }
             else
             {
-                Response.Write("<script>alert('REGISTRO CORRECTO.') </script>");
+                Response.Write("<script>alert('REGISTRO INCORRECTO.') </script>");
             }
         }
     }
