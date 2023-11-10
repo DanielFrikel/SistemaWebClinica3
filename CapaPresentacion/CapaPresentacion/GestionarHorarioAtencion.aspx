@@ -45,27 +45,19 @@
                                 <tr>
                                     <th></th>
                                     <th></th>
-                                    <th>FECHA DE ATENCION</th>
-                                    <th>HORA DE ATENCION</th>
-                                    <th style="display: none">ESTADO</th>                                    
+                                    <th></th> <!--contenedor del id-->
+                                    <th style="text-align: center">FECHA DE ATENCION</th>
+                                    <th style="text-align: center">HORA DE ATENCION</th>                                    
                                 </tr>
                             </thead>
                             <tbody id="tbl_body_table">
-                                <!-- DATA POR MEDIO DE AJAX -->
-                                <%--<tr>
-                                    <td>boton-editar</td>
-                                    <td>boton-eliminar</td>
-                                    <td>campo-fecha</td>
-                                    <td>campo-hora</td>
-                                    <td style="display: none">estado</td>
-                                </tr>--%>
                             </tbody>
                         </table>
                     </div>
                     <div class="box-footer" style="text-align: center">
 <%--                        <asp:Button ID="btnAgregarHorario" runat="server" CssClass="btn btn-primary" Text="Agregar Horario"/>--%>
                         <asp:LinkButton ID="btnAgregarHorario" runat="server" CssClass="btn btn-primary" href="#AgregarHorario" data-toggle="modal"> Agregar Horario</asp:LinkButton>
-                        <asp:Button ID="btnGuardarHorario" runat="server" CssClass="btn btn-success" Text="Guardar Horario"/>
+                        <%--<asp:Button ID="btnGuardarHorario" runat="server" CssClass="btn btn-success" Text="Guardar Horario"/>--%>
                     </div>
                 </div>
             </div>

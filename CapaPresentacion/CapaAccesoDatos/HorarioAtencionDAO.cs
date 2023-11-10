@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using CapaEntidades;
@@ -59,10 +62,7 @@ namespace CapaAccesoDatos
                         },
                         Estado = Convert.ToBoolean(dr["estado"].ToString())                        
                     };
-                }
-
-                return objHorario;
-
+                }                
             }
             catch (Exception ex)
             {
@@ -73,8 +73,87 @@ namespace CapaAccesoDatos
             {
                 conexion.Close();
             }
+            return objHorario;
+        }
 
-            return null;
+        public List<HorarioAtencion> Listar(Int32 idMedico)
+        {
+            SqlConnection conexion = Conexion.getInstance().ConexionDB();
+            SqlCommand cmd = null;
+            SqlDataReader dr = null;
+            List<HorarioAtencion> Lista = null;
+
+            try
+            {
+                cmd = new SqlCommand("spListaHorariosAtencion", conexion);
+                cmd.Parameters.AddWithValue("@prmIdMedico", idMedico);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                conexion.Open();
+
+                dr = cmd.ExecuteReader();
+
+                Lista = new List<HorarioAtencion>();
+
+                while (dr.Read())
+                {
+                    // llenamos los objetos
+                    HorarioAtencion objHorario = new HorarioAtencion();
+                    objHorario.idHorarioAtencion = Convert.ToInt32(dr["idHorarioAtencion"].ToString());
+                    objHorario.Fecha = Convert.ToDateTime(dr["fecha"].ToString());
+                    objHorario.horaCita = new Hora()
+                    {
+                        hora = dr["hora"].ToString()
+                    };
+
+                    Lista.Add(objHorario);
+                }
+            } 
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally 
+            {
+                conexion.Close();
+            }
+
+            return Lista;
+
+        }
+
+        public bool Eliminar(Int32 idHorarioAtencion)
+        {
+
+            bool ok = false;
+
+            SqlConnection conexion = null;
+            SqlCommand cmd = null;
+
+            try
+            {
+                conexion = Conexion.getInstance().ConexionDB();
+                cmd = new SqlCommand("spEliminarHorarioAtencion", conexion);
+                cmd.Parameters.AddWithValue("@prmIdHorarioAtencion", idHorarioAtencion);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                conexion.Open();
+
+                cmd.ExecuteNonQuery();
+
+                ok = true;
+            }
+            catch (Exception ex)
+            {
+                ok = false;
+                throw ex;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+
+            return ok;
         }
     }
 }

@@ -16,8 +16,8 @@
     <link href="css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
     <link href="jAlert/jquery.alerts.css" rel="stylesheet" type="text/css" />
-
     <!-- DataTables -->
+    
     <link href="css/datatables/dataTables.bootstrap.css" rel="stylesheet" />
 
 <%--<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />

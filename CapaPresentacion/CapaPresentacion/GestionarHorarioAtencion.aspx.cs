@@ -52,5 +52,22 @@ namespace CapaPresentacion
 
             return HorarioAtencionLN.getInstance().RegistrarHorarioAtencion(objHorarioAtencion);
         }
+
+        [WebMethod]
+        public static List<HorarioAtencion> ListarHorariosAtencion(String idmedico) 
+        {
+            Int32 idMedico = Convert.ToInt32(idmedico);
+
+            return HorarioAtencionLN.getInstance().Listar(idMedico);
+        }
+        [WebMethod]
+        public static bool EliminarHorarioAtencion(String id)
+        {
+            Int32 idHorarioAtencion = Convert.ToInt32(id);
+
+            return HorarioAtencionLN.getInstance().Eliminar(idHorarioAtencion);
+
+            return true;
+        }
     }
 }
