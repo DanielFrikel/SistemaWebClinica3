@@ -64,5 +64,19 @@ namespace CapaLogicaNegocio
                 throw ex;
             }
         }
+
+        public bool Editar(HorarioAtencion objHorario)
+        {
+
+            try
+            {
+                return HorarioAtencionDAO.getInstance().Editar(objHorario);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }            
+        }
     }
 }

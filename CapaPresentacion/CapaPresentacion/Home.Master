@@ -170,7 +170,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#">
+                        <a href="GestionarReservaCitas.aspx">
                             <i class="fa fa-th"></i>
                             <span>Reserva de Citas</span>
                         </a>

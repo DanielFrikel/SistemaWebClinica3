@@ -172,6 +172,65 @@ $(document).on('click', '.btn-delete', function (e) {
     listHorarios($("#txtMedico").val());
 });
 
+//evento click para boton eliminar
+$(document).on('click', '.btn-edit', function (e) {
+    e.preventDefault();
+
+    //Primer Metodo: Eliminar la fila del dataTable:
+    var row = $(this).parent().parent()[0];
+    var dataRow = tabla.fnGetData(row);
+
+    //updateDataAjax(dataRow);
+
+    llenarDatosHorario(dataRow);
+    //listHorarios($("#txtMedico").val());
+    /*
+        idmedico
+        idhorarioatencion
+        fecha
+        hora
+    */
+
+});
+
+function llenarDatosHorario(data) {
+    $("#txtEditarFecha").val(data[3]);
+    $("#txtEditarHora").val(data[4]);
+    $("#txtIdHorario").val(data[2]);    
+}
+
+$("#btnEditar").click(function (e) {
+
+    e.preventDefault();
+    
+    var fechaFormateada2 = $("#txtEditarFecha").val().split('/').reverse().join('-');
+
+    var obj = JSON.stringify({
+        idmedico: $("#txtMedico").val(),
+        idhorario: $("#txtIdHorario").val(),
+        fecha: fechaFormateada2, //YYYY-MM-DD
+        hora: $("#txtEditarHora").val() //Horario 24 horas
+    });    
+
+    $.ajax({
+        type: "POST",
+        url: "GestionarHorarioAtencion.aspx/ActualizarHorarioAtencion",
+        data: obj,
+        dataType: "json",
+        contentType: 'application/json; charset=utf-8',
+        error: function (xhr, ajaxOptions, thrownError) {
+            console.log(xhr.status + " \n" + xhr.responseText, "\n" + thrownError);
+        },
+        success: function (response) {
+            if (response.d) {
+                listHorarios($("#txtMedico").val());
+                alert("Registro actualizado de manera correcta.");
+            } else {
+                alert("No se pudo actualizar el registro.");
+            }
+        }
+    });
+});
 
 function deleteDataAjax(data) {
     //DUDOSO

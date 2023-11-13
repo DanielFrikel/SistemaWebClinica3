@@ -155,5 +155,40 @@ namespace CapaAccesoDatos
 
             return ok;
         }
+
+        public bool Editar(HorarioAtencion objHorario)
+        {
+            SqlConnection conexion = Conexion.getInstance().ConexionDB();
+            SqlCommand cmd = null;
+            bool ok = false;
+
+            try
+            {
+                cmd = new SqlCommand("spActualizarHorarioAtencion", conexion);
+                cmd.Parameters.AddWithValue("@prmIdHorario", objHorario.idHorarioAtencion);
+                cmd.Parameters.AddWithValue("@prmIdMedico",objHorario.medico.IdMedico);                
+                cmd.Parameters.AddWithValue("@prmFecha", objHorario.Fecha);
+                cmd.Parameters.AddWithValue("@prmHora", objHorario.horaCita.hora);
+                
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                conexion.Open();
+
+                cmd.ExecuteNonQuery();
+
+                ok = true;
+            }
+            catch (Exception ex)
+            {
+                ok = false;
+                throw ex;
+            }
+            finally 
+            {
+                conexion.Close();                
+            }
+
+            return ok;
+        }
     }
 }

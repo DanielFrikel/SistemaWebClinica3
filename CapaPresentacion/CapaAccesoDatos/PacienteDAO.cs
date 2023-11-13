@@ -172,5 +172,50 @@ namespace CapaAccesoDatos
             return ok;
         }
 
+        public Paciente BuscarPacienteDNI(string dni)
+        {
+            SqlConnection conex = null;
+            SqlCommand cmd = null;
+            SqlDataReader dr = null;
+            Paciente objPaciente = null;
+
+            try
+            {
+                conex = Conexion.getInstance().ConexionDB();
+                cmd = new SqlCommand("spBuscarPacienteDNI", conex);
+                cmd.Parameters.AddWithValue("@prmDni", dni);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                conex.Open();
+
+                dr = cmd.ExecuteReader();
+
+                if (dr.Read()) 
+                {
+                    objPaciente = new Paciente
+                    {
+                        IdPaciente = Convert.ToInt32(dr["idPaciente"].ToString()),
+                        Nombres = dr["nombres"].ToString(),
+                        ApPaterno = dr["apPaterno"].ToString(),
+                        ApMaterno = dr["apMaterno"].ToString(),
+                        Telefono = dr["telefono"].ToString(),
+                        Edad = Convert.ToInt32(dr["edad"].ToString()),
+                        Sexo = Convert.ToChar(dr["sexo"].ToString())                        
+                    };                                        
+                }
+
+            }
+            catch (Exception ex)
+            {
+                objPaciente = null;
+                throw ex;
+            }
+            finally 
+            {
+                conex.Close();
+            }
+
+            return objPaciente;
+        }
     }
 }
