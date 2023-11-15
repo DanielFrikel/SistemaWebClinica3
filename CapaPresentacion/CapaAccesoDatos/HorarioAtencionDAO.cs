@@ -122,6 +122,60 @@ namespace CapaAccesoDatos
 
         }
 
+        public List<HorarioAtencion> ListarHorarioReservas(Int32 IdEspecialidad, DateTime Fecha)
+        {
+            SqlConnection conexion = Conexion.getInstance().ConexionDB();
+            SqlCommand cmd = null;
+            SqlDataReader dr = null;
+            List<HorarioAtencion> Lista = null;
+
+            try
+            {
+                cmd = new SqlCommand("spListarHorariosAtencionPorFecha", conexion);
+                cmd.Parameters.AddWithValue("@prmIdEspecialidad", IdEspecialidad);
+                cmd.Parameters.AddWithValue("@prmFecha", Fecha);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                conexion.Open();
+
+                dr = cmd.ExecuteReader();
+
+                Lista = new List<HorarioAtencion>();
+
+                while (dr.Read())
+                {
+                    // llenamos los objetos
+                    HorarioAtencion objHorarioAtencion = new HorarioAtencion();
+                    Medico objMedico = new Medico();
+                    Hora objHora = new Hora();
+
+                    objHora.IdHora = Convert.ToInt32(dr["idHora"].ToString());
+                    objHora.hora = dr["hora"].ToString();
+                    objHorarioAtencion.horaCita = objHora;
+
+                    objMedico.IdMedico = Convert.ToInt32(dr["idMedico"].ToString());
+                    objMedico.Nombres = dr["nombres"].ToString();
+                    objHorarioAtencion.medico = objMedico;
+
+                    objHorarioAtencion.idHorarioAtencion = Convert.ToInt32(dr["idHorarioAtencion"].ToString());
+                    objHorarioAtencion.Fecha = Convert.ToDateTime(dr["fecha"].ToString());
+
+                    Lista.Add(objHorarioAtencion);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conexion.Close();
+            }
+
+            return Lista;
+
+        }
+
         public bool Eliminar(Int32 idHorarioAtencion)
         {
 

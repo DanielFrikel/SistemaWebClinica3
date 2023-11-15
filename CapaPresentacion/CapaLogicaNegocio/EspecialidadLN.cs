@@ -27,7 +27,16 @@ namespace CapaLogicaNegocio
 
         public List<Especialidad> Listar() 
         {
-            return EspecialidadDAO.getInstance().Listar();
+            try
+            {
+                return EspecialidadDAO.getInstance().Listar();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            
         }
 
     }

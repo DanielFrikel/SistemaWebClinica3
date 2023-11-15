@@ -1,8 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="GestionarReservaCitas.aspx.cs" Inherits="CapaPresentacion.GestionarReservaCitas" ClientIDMode="Static" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+          <link href="css/timepicker/bootstrap-timepicker.min.css" rel="stylesheet" />
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">    
-        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <asp:UpdatePanel ID="upPanel" runat="server">
             <ContentTemplate>
                 <section class="content-header">
@@ -73,8 +74,9 @@
                                                 <div class="input-group">
                                                     <div class="input-group-addon">
                                                         <i class="fa fa-calendar"></i>
-                                                    </div>
-                                                    <asp:TextBox ID="txtFechaAtencion" runat="server" CssClass="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask=""></asp:TextBox>
+                                                    </div>                                                    
+                                                    <asp:TextBox ID="txtFechaAtencion" CssClass="form-control data-mask" data-inputmask="'alias': 'dd/mm/yyyy'"
+                                                        data-mask="" runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
                                         </div>
@@ -109,16 +111,16 @@
                                                             <asp:Label ID="lblHoraHeader" runat="server" Text="Hora de Atención"></asp:Label>
                                                         </HeaderTemplate>
                                                         <ItemTemplate>
-                                                            <asp:Label ID="lblHora" runat="server" Text=''></asp:Label>
+                                                            <asp:Label ID="lblHora" runat="server" Text='<%#Eval("HoraCita.hora") %>'></asp:Label>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                     <asp:TemplateField>
                                                         <HeaderTemplate>
-                                                            <asp:Label ID="lblMedicoHeader" runat="server" Text="Médico"></asp:Label>
+                                                            <asp:Label ID="lblMedicoHeader" runat="server" Text="Medico"></asp:Label>
                                                         </HeaderTemplate>
                                                         <ItemTemplate>
-                                                            <asp:HiddenField ID="hfIdMedico" runat="server"  />
-                                                            <asp:Label ID="lblMedico" runat="server" ></asp:Label>
+                                                            <asp:HiddenField ID="hfIdMedico" runat="server" Value='<%#Eval("medico.IdMedico") %>'/>
+                                                            <asp:Label ID="lblMedico" runat="server" Text='<%#Eval("medico.Nombres") %>'></asp:Label>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                 </Columns>
@@ -138,14 +140,14 @@
 
                 </section>
                 <%--<input id="idPaciente" type="hidden"  />--%>
-                <asp:HiddenField ID="idPaciente" runat="server" Visible="false" />
-            </ContentTemplate>
-        </asp:UpdatePanel>
+                <asp:HiddenField ID="idPaciente" runat="server" Visible="true" />                
+            </ContentTemplate>            
+        </asp:UpdatePanel>  
 
-</asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
-    <script src="js/plugins/input-mask/jquery.inputmask.js"></script>
-    <script src="js/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-    <script src="js/plugins/input-mask/jquery.inputmask.extensions.js"></script>
-    <script src="js/reserva.js"></script>
+  <script src="js/plugins/input-mask/jquery.inputmask.js"></script>
+  <script src="js/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+  <script src="js/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+  <script src="js/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+
+  <script src="js/reserva.js"></script>
 </asp:Content>

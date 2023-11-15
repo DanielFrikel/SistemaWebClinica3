@@ -1,8 +1,7 @@
 ﻿//$("$txtDNI")
+$("[data-mask]").inputmask();
 
 $("#btnBuscar").on("click", function (e) {
-    e.preventDefault();
-
     var dni = $("#txtDNI").val();
     //console.log(dni);
     //console.log(typeof dni);
@@ -11,24 +10,24 @@ $("#btnBuscar").on("click", function (e) {
 });
 
 function searchPacienteDni(dni) {
-    var obj = JSON.stringify({ dni: dni });
-    console.log(obj);
+    var data = JSON.stringify({ dni: dni });
 
     $.ajax({
         type: "POST",
         url: "GestionarReservaCitas.aspx/BuscarPacienteDNI",
-        data: obj,
+        data: data,
         contentType: 'application/json; charset=utf-8',
         error: function (xhr, ajaxOptions, thrownError) {
             console.log(xhr.status + " \n" + xhr.responseText, "\n" + thrownError);
         },
-        success: function (data) {                   
+        success: function (data) {
             if (data.d == null) {
-                alert('No existe el paciente con dni: ' + dni);
+                alert('No exite el paciente con dni' + dni);
                 limpiarDatosPaciente();
             } else {
                 llenarDatosPaciente(data.d);
             }
+
         }
     });
 }
@@ -43,7 +42,7 @@ function llenarDatosPaciente(obj) {
 }
 
 function limpiarDatosPaciente() {
-    $("#idPaciente").val("0");
+    $("#idPaciente").val("");
     $("#txtNombres").val("");
     $("#txtApellidos").val("");
     $("#txtTelefono").val("");
